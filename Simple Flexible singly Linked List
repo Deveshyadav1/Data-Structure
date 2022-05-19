@@ -1,0 +1,87 @@
+#include<iostream>
+using namespace std;
+#include<stdlib.h>
+
+class node 
+{
+    public:
+    int data;
+    node* next;
+};
+
+void insert_node(node* &head)
+{
+    node* temp = new node();
+    
+    cout<<endl<<"\nEnter Data\n";
+    cin>>temp->data;
+    temp->next = NULL;
+    
+    if(head==NULL)
+    {
+        head = temp;
+    }
+    else
+    {
+        node* ptr = head;
+        
+        while(ptr->next!=NULL)
+        {
+            ptr = ptr->next;
+        }
+        ptr->next = temp; 
+    }
+}
+
+void traverse(node* head)
+{
+    node* ptr;
+    ptr = head;
+    
+    if(head==NULL)
+    {
+        cout<<endl<<"\nLinked List Empty!\n";
+    }
+    else
+    {
+     do
+     {
+         cout<<endl;
+         cout<<ptr->data<<" ";
+         ptr=ptr->next;
+     }
+     while(ptr!=NULL);
+    }
+    cout<<endl;
+}
+
+int main()
+{
+    node* head=NULL;
+    int choise;
+    while(1)
+    {
+    cout<<"\n1. Add Node";
+    cout<<"\n2. Traverse";
+    cin>>choise;
+    
+    switch(choise)
+    {
+        case 1:
+        insert_node(head);
+        break;
+        
+        case 2:
+        traverse(head);
+        break;
+        
+        default:
+        cout<<endl<<"Enter A valid choise : ";
+        break;
+    }
+    }
+    
+    return 0;
+    
+    
+}
