@@ -1,0 +1,119 @@
+#include<iostream>
+using namespace std;
+#include<stdlib.h>
+
+class node 
+{
+    public:
+    int data;
+    node* prev;
+    node* next;
+
+    node()
+    {
+        cout<<endl<<"Enter Data : ";
+        cin>>data;
+        prev = NULL;
+        next = NULL; 
+    }
+};
+
+void add_node(node* &start)
+{
+    node* temp = new node();
+     
+     if(start==NULL)
+     {
+         start = temp ;
+         temp->prev = start;
+         cout<<endl<<"Node Inserted : "; 
+     }
+     else
+     {
+         node* ptr=start;
+         while(ptr->next!=NULL)
+         {
+             ptr=ptr->next;
+         }
+         ptr->next = temp ;
+         temp->prev = ptr;
+         cout<<endl<<"Node Inserted : ";
+     }
+     
+}
+
+void traverse(node* start)
+{
+    if(start==NULL)
+    {
+        cout<<endl<<"Doubly Linked List is Empty";
+    }
+    else
+    {
+        node* ptr = start;
+        while(ptr!=NULL)
+        {
+            cout<<ptr->data<<" --> ";
+            ptr=ptr->next;
+        }
+    }
+}
+
+void reverse_traverse(node* start)
+{
+    if(start==NULL)
+    {
+        cout<<endl<<"Doubly Linked List Empty ! ";
+    }
+    else
+    {
+        node* ptr = start;
+        node* ptr1 = start;
+        while(ptr->next!=NULL)
+        {
+            ptr=ptr->next;
+        }
+        while(ptr->prev!=ptr1)
+        {
+            cout<<" <-- "<<ptr->data;
+            ptr = ptr->prev;
+        }
+    }
+    
+}
+
+int main()
+{
+   node* start = NULL;
+   int choise;
+
+   while(1)
+   {
+   cout<<endl<<"1. Add  Node      : ";
+   cout<<endl<<"2. Show Data      : ";
+   cout<<endl<<"3. Back Traverse  : ";
+   cin>>choise;
+
+   switch(choise)
+   {
+       case 1:
+       add_node(start);
+       break;
+
+       case 2:
+       traverse(start);
+       break;
+       
+       case 3:
+       reverse_traverse(start);
+       break;
+
+       default:
+       cout<<endl<<"ENter a valid choise :";
+       break;
+   }
+
+   }
+   return 0;
+
+}
