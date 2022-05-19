@@ -1,0 +1,197 @@
+#include<iostream>
+using namespace std;
+#include<stdlib.h>
+
+class node
+{
+    public:
+    int data;
+    node* next;
+    node()
+    {
+        cout<<endl<<" Enter Data : ";
+        cin>>data;
+        next = NULL;
+    }
+};
+
+void add_node(node* &start, int node_no)
+{
+    node_no = node_no+1;
+    node* temp = new node();
+    if(start == NULL)
+    {
+        start = temp;
+        cout<<endl<<" "<<node_no  <<"st Node Inserted : "<<endl;
+    }
+    else
+    {
+        node* ptr = start;
+        while(ptr->next!=NULL)
+        {
+            ptr=ptr->next;
+        }
+        ptr->next = temp;
+        if(node_no == 2)
+        {
+           cout<<endl<<" "<<node_no  <<"nd Node Inserted : "<<endl;    
+        }
+        else if(node_no == 3)
+        {
+            cout<<endl<<" "<<node_no <<"rd Node Inserted : "<<endl;
+        }
+        else if(node_no == 4)
+        {
+            cout<<endl<<" "<<node_no <<"th Node Inserted : "<<endl;
+        }
+        else
+        {
+            cout<<endl<<" "<<node_no <<"th Node Inserted : "<<endl;
+        }
+        
+        
+    }
+}
+
+int count_node(node* start)
+{
+    int count = 0;
+    if(start == NULL)
+    {
+        return 0;
+        
+    }
+    node* ptr = start;
+    while(ptr!=NULL)
+    {
+        ptr = ptr->next;
+        count++;
+    }
+    return count;
+}
+
+void serch_node(node* start)
+{
+    if(start == NULL)
+    {
+        cout<<endl<<" Linked List Empty!";
+    }
+    else
+    {
+    int data;
+    int flag=0;
+    int position=0;
+    node* ptr = start;
+    cout<<endl<<" Enter Data to search :";
+    cin>>data;
+    while(ptr!=NULL)
+    {
+        position++;
+        if(ptr->data == data)
+        {
+           flag=1;
+           break;
+        }
+        else
+        {
+          ptr=ptr->next;    
+        }
+    }
+     if(flag == 1)
+        {
+            cout<<endl<<" "<<data<<" found at "<<position<<" position"<<endl;
+        }
+        else
+        {
+            cout<<endl<<" data Not Found !"<<endl;
+        }
+    
+    }
+}
+
+void traverse(node* start)
+{
+    node* ptr = start;
+    if(start == NULL)
+    {
+       cout<<endl<<" ==================== ";
+       cout<<" Linked List Traverse ";
+       cout<<" ==================== ";
+       cout<<endl<<" Linked List Empty !"<<endl;
+    }
+    else
+    {
+       cout<<endl<<" ==================== ";
+       cout<<" Linked List Traverse ";
+       cout<<" ==================== "<<endl;
+       
+       int i=1;
+       while(ptr!=NULL)
+       {
+           cout<<endl<<" ["<<i<<"].  "<<ptr->data;
+           ptr=ptr->next;
+           i++;
+       }
+       cout<<endl;
+    }
+}
+
+int main()
+{
+    node* start = NULL;
+    int choise;
+    
+    while(1)
+    {
+    cout<<endl<<" 1. Add Node      : ";
+    cout<<endl<<" 2. Search Node   : ";
+    cout<<endl<<" 3. Count Node    : ";
+    cout<<endl<<" 4. Traverse Node : ";cin>>choise;
+    
+    switch(choise)
+    {
+        case 1:
+        int node_value;
+        node_value = count_node(start);
+        add_node(start,node_value);
+        break;
+        
+        case 2:
+        serch_node(start);
+        break;
+        
+        case 3:
+        if(start==NULL)
+        {
+            cout<<endl<<" Not Availeble Any Node"<<endl;
+        }
+        else
+        {
+        cout<<endl<<" "<<node_value + 1<<" Nodes Availeble"<<endl;
+        }
+        break;
+        
+        case 4:
+        traverse(start);
+        break;
+        
+        default:
+        cout<<endl<<" Wrong Choise Try Again ! ";
+        break;
+        
+    }
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
