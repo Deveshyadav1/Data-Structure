@@ -1,0 +1,108 @@
+#include<iostream>
+using namespace std;
+#include<stdlib.h>
+#include<time.h>
+#include<chrono>
+#include<ctime>
+
+
+class stack
+{
+    int* arr;
+    int  top;
+    int n;
+    
+    public:
+    stack()
+    {
+        int n = 10;
+        arr = new int[n];
+        top=-1;
+    }
+    
+    void push()
+    {
+        if(top==n-1)
+        {
+            cout<<endl<<" stack overflow :"<<endl;
+        }
+        top++;
+        cout<<endl<<" Enter data :";
+        cin>>arr[top];
+        auto timenow = chrono::system_clock::to_time_t(chrono::system_clock::now());
+        cout<<endl<<" "<<arr[top]<<" added at "<<ctime(&timenow)<<endl;
+    }
+    
+    void pop()
+    {
+        if(top==-1)
+        {
+            cout<<endl<<" Underflow :"<<endl;
+        }
+        top--;
+    }
+    
+    void Top()
+    {
+        if(top==-1)
+        {
+            cout<<endl<<" Stack is Empty"<<endl;
+        }
+        else
+        {
+        cout<<endl<<" "<<arr[top];
+        }
+    }
+    void isempty()
+    {
+        if(top==-1)
+        {
+            cout<<endl<<" Empty !";
+        }
+        else
+        {
+          cout<<endl<<" Not Empty ";
+        }
+    }
+    
+};
+
+int main()
+{
+    stack s;
+    int choise;
+    while(1)
+    {
+        cout<<endl<<" 1. Push Element     :";
+        cout<<endl<<" 2. Pop  Element     :";
+        cout<<endl<<" 3. Top  Element     :";
+        cout<<endl<<" 4. Is   Empty Stack :";cin>>choise;
+        
+        switch(choise)
+        {
+            case 1:
+            s.push();
+            break;
+            
+            case 2:
+            s.pop();
+            break;
+            
+            case 3:
+            s.Top();
+            break;
+            
+            case 4:
+            s.isempty();
+            break;
+            
+            default:
+            cout<<endl<<" Wrong choise :"<<endl;
+            break;
+            
+        }
+    }
+    return 0;
+}
+
+
