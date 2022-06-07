@@ -1,0 +1,111 @@
+#include<iostream>
+using namespace std;
+#include<stdlib.h>
+
+# define n 20 
+
+class queue
+{
+    public:
+    int* Queue;
+    int front;
+    int back;
+    
+    public:
+    queue()
+    {
+        Queue = new int[n];
+        front = -1;
+        back = -1;
+    }
+    
+    void enqueue()
+    {
+        if(back==n-1)
+        {
+            cout<<endl<<" Queue Overflow :"<<endl;
+            return;
+        }
+       else if(front == -1 || back == -1)
+        {
+            front++;
+            back++;
+            cout<<endl<<" Enter Data :";cin>>Queue[back];
+        }
+        else 
+        {
+            back++;
+            cout<<endl<<" Enter Data :";cin>>Queue[back];
+        }
+    }
+    
+    void dqueue()
+    {
+        if(front == -1 || back == -1)
+        {
+            cout<<endl<<" Queue underflow"<<endl;
+        }
+        else if(front > back)
+        {
+            cout<<endl<<" Queue underflow"<<endl;
+        }
+        else
+        {
+            cout<<endl<<" "<<Queue[front]<<" dequed "<<endl;
+            front++;
+        }
+    }
+    
+    void peek()
+    {
+        if(front == -1 || back == -1)
+        {
+            cout<<endl<<" Empty Queue !"<<endl;
+        }
+        else if(front > back)
+        {
+            cout<<endl<<" Empty Queue !"<<endl;
+        }
+        else 
+        {
+            cout<<endl<<" "<<Queue[front]<<" Ready to out -> "<<endl;
+        }
+    }
+    
+    
+};
+
+int main()
+{
+    int choise;
+    queue q;
+    
+    cout<<endl<<" <===== : Queue Data Structure : =====> "<<endl;
+    while(1)
+    {
+        cout<<endl<<" 1. Enqueuq :";
+        cout<<endl<<" 2. Dequeu  :";
+        cout<<endl<<" 3. Peek    :";cin>>choise;
+       
+       switch(choise)
+       {
+           case 1:
+           q.enqueue();
+           break;
+           
+           case 2:
+           q.dqueue();
+           break;
+           
+           case 3:
+           q.peek();
+           break;
+           
+           default:
+           cout<<endl<<" Wrong choise :"<<endl;
+           break;
+       }
+    }
+    
+    return 0;
+}
