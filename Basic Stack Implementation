@@ -1,0 +1,114 @@
+#include<iostream>
+using namespace std;
+#include<stdlib.h>
+
+#define n 100
+class stack
+{
+    int* arr;
+    int top;
+    
+    public:
+    
+    stack()
+    {
+        arr=new int[n];
+        top=-1;
+    }
+    
+    void push()
+    {
+        if(top==n-1)
+        {
+         cout<<endl<<" Stack overflow : ";   
+         return;
+        }
+        else
+        {
+          top++;
+          cout<<endl<<" Enter Data :";
+          cin>>arr[top];
+          cout<<endl<<" Element Pushed <-- "<<endl;
+        }
+    }
+    
+    void pop()
+    {
+        if(top==-1)
+        {
+            cout<<endl<<" Stack Underflow";
+            return;
+        }
+        cout<<endl<<" "<<arr[top]<<" Popped --> "<<endl;
+        top--;
+    }
+    
+    bool isempty()
+    {
+        if(top==-1)
+        {
+            cout<<endl<<" Stack Empty !"<<endl;
+            return 1;
+        }
+        else
+        {
+            cout<<endl<<" Not Empty "<<endl;
+            return 0;
+        }
+    }
+    
+    void Top()
+    {
+        int val;
+        if(top==-1)
+        {
+            cout<<endl<<" No element is in stack ! "<<endl;
+        }
+    
+        
+            val = arr[top];
+
+       cout<<" Top = "<<val<<endl;
+    }
+};
+
+int main()
+{
+    stack s1;
+    int choise;
+    
+    while(1)
+    {
+        cout<<endl<<" 1. Push Element   :";
+        cout<<endl<<" 2. Pop  Element   :";
+        cout<<endl<<" 3. Top  Element   :";
+        cout<<endl<<" 4. Is Empty Stack :";
+        cin>>choise;
+        
+        switch(choise)
+        {
+            case 1:
+            s1.push();
+            break;
+            
+            case 2:
+            s1.pop();
+            break;
+            
+            case 3:
+            s1.Top();
+            break;
+            
+            case 4:
+            s1.isempty();
+            break;
+            
+            default:
+            cout<<endl<<" Wrong Choise !";
+            break;
+        }
+    }
+    return 0;
+}
+
+
